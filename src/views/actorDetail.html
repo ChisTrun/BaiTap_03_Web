@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập cá nhân 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="/Js/jquery.js"></script>
+    <link rel="stylesheet" href="/Css/style.css">
+</head>
+
+<body class="bg">
+    <div class="container-fluid">
+        <!-- Header -->
+        <div class="row ">
+            <nav class="navbar bg-body-tertiary rounded border border-light pt-3 pb-3  mb-2" data-bs-theme="theme">
+                <div class="container-fluid  ">
+                    <h1 class="navbar-brand fs-6 w-25">21120159</h1>
+                    <h1 class="navbar-brand fs-1">Movie Infomation</h1>
+                    <div class="navbar-brand d-flex flex-column align-items-end w-25">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input inputDarkMode" 21159{if darkMode} checked {else} {/if}
+                                type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Dark mode</label>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Navigation-->
+        <div class="row mb-2">
+            <nav class="navbar bg-body-tertiary rounded border border-light " :data-bs-theme="theme">
+                <div class="container-fluid  ">
+                    <a class="navbar-brand homeButton" href="/"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                            viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <style>
+                                svg {
+                                    fill: #000000
+                                }
+                            </style>
+                            <path
+                                d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
+                        </svg></a>
+                    <a class="navbar-brand favpage">21159</a>
+                    <form action="/search" method="post" class="d-flex justify-content-end searchForm w-50"
+                        role="search">
+                        <input name="searchString" class="form-control me-2 w-50" type="search" placeholder="Search"
+                            aria-label="Search" data-bs-theme="light">
+                        <button class="btn btn-outline-success w-25  me-2" type="submit">Search</button>
+                        <div class="btn-group mr-5  me-2" role="group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                searchType
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="form-check dropdown-item">
+                                        <input class="form-check-input" type="radio" name="searchType"
+                                            id="exampleRadios1" value="Actor" checked>
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            Actor
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-check dropdown-item">
+                                        <input class="form-check-input" type="radio" name="searchType"
+                                            id="exampleRadios1" value="Type" checked>
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            Type
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-check dropdown-item ">
+                                        <input class="form-check-input" type="radio" name="searchType"
+                                            id="exampleRadios1" value="Title" checked>
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            Title
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+
+
+        <!-- content-->
+        21159{if hasData}
+        <div class="row p-3">
+            <div class="col-12">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th class="custom-width">Image</th>
+                            <td><img src="21159{actor.image}" class="rounded w-25  mx-auto d-block"
+                                    alt="21159{actor.image}"></td>
+                        </tr>
+                        <tr>
+                            <th class="custom-width">Name</th>
+                            <td>21159{actor.name}</td>
+                        </tr>
+                        <tr>
+                            <th>Summary</th>
+                            <td>21159{actor.summary}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row">
+                <h5>Cast Movies</h5>
+            </div>
+            <div class="row showMovies">
+            </div>
+
+        </div>
+        {else}
+        <div>
+            <div class="alert alert-danger " role="alert">
+                <h4 class="alert-heading">Data Not Found or Currently Being Updated</h4>
+                <p>I apologize for the inconvenience. The data you are looking for is currently unavailable or in the
+                    process of being updated. We understand the importance of this information to you and are working
+                    diligently to resolve this issue. We appreciate your patience and understanding during this time.
+                </p>
+                <hr>
+                <p class="mb-0">Best Regards, Vo Chi Trung.</p>
+            </div>
+        </div>
+        {/if}
+
+    </div>
+    <!-- Footer -->
+    <div class="row ">
+        <nav class="navbar bg-body-tertiary rounded border border-light p-3 mb-2" :data-bs-theme="theme">
+            <div class="container-fluid ">
+                <h1 class="navbar-brand fs-6 ">footer</h1>
+            </div>
+        </nav>
+    </div>
+</body>
+
+<script>
+    let currentPage = 1;
+    let perPage = 3;
+    let numberOfPage = 0
+
+    const generateMovies = async () => {
+        let movies = await fetch(`../../../api/castMovies/id=21159{actor.id}`);
+        movies = await movies.json();
+        console.log(movies);
+        movies.forEach(element => {
+            $('.showMovies').append(`
+                <div class="col-sm-4 p-5">
+                    <div class="card h-100">
+                        <div style="height: 80%" class="d-flex justify-content-center align-items-center">
+                            <img mvid='${element.id}' class="card-img-top" src="${element.image}" />
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">${element.title}</h5>
+                            <p class="card-text text-center">Release Date:  ${element.releaseDate}</p>
+                            <p class="card-text text-center">Length: ${element.runtimeStr}</p>
+                            <p class="card-text text-center">Awards: ${element.awards}</p>
+                        </div>
+                    </div>
+                </div >
+                `);
+        });
+    }
+    generateMovies();
+</script>
+<script>
+    let dark = false;
+    const updateMode = () => {
+        if ($('.inputDarkMode').is(':checked')) {
+            $('.bg').toggleClass('bg-dark')
+            $('.bg').removeClass('bg-body-secondary')
+            $('.heading').toggleClass('text-light');
+            $('.heading').removeClass('text-dark');
+            $('.searchForm').attr('action', `/search/dark=true`);
+            $('.homeButton').attr('href', `/dark=true`);
+            return true;
+        } else {
+            $('.bg').toggleClass('bg-body-secondary')
+            $('.bg').removeClass('bg-dark')
+            $('.heading').toggleClass('text-dark');
+            $('.heading').removeClass('text-light');
+            $('.searchForm').attr('action', `/search/dark=false`);
+            $('.homeButton').attr('href', `/dark=false`);
+            return false
+        }
+    }
+    dark = updateMode();
+    $('.inputDarkMode').on('change', (e) => {
+        dark = updateMode();
+    })
+    $(document).on('click', 'img', function () {
+        let movieId = $(this).attr('mvid');
+        window.location.href = `/detail/movies/id=${movieId}/dark=${dark}`;
+    });
+    $('.favpage').on('click', () => {
+        window.location.href = `/fav/dark=${dark}`;
+    })
+</script>
+
+
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài tập cá nhân 3</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="/Js/jquery.js"></script>
+  <link rel="stylesheet" href="/Css/style.css">
+</head>
+
+<body class="bg">
+  <div class="container-fluid">
+    <!-- Header -->
+    <div class="row ">
+      <nav class="navbar bg-body-tertiary rounded border border-light pt-3 pb-3  mb-2" data-bs-theme="theme">
+        <div class="container-fluid  ">
+          <h1 class="navbar-brand fs-6 w-25">21120159</h1>
+          <h1 class="navbar-brand fs-1">Movie Infomation</h1>
+          <div class="navbar-brand d-flex flex-column align-items-end w-25">
+            <div class="form-check form-switch">
+              <input class="form-check-input inputDarkMode" 21159{if darkMode} checked {else} {/if} type="checkbox"
+                role="switch" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Dark mode</label>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Navigation-->
+    <div class="row mb-2">
+      <nav class="navbar bg-body-tertiary rounded border border-light " :data-bs-theme="theme">
+        <div class="container-fluid  ">
+          <a class="navbar-brand homeButton" href="/"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
+              viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <style>
+                svg {
+                  fill: #000000
+                }
+              </style>
+              <path
+                d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
+            </svg></a>
+          <a class="navbar-brand favpage">21159</a>
+          <form action="/search" method="post" class="d-flex justify-content-end searchForm w-50" role="search">
+            <input name="searchString" class="form-control me-2 w-50" type="search" placeholder="Search"
+              aria-label="Search" data-bs-theme="light">
+            <button class="btn btn-outline-success w-25  me-2" type="submit">Search</button>
+            <div class="btn-group mr-5  me-2" role="group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                searchType
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <div class="form-check dropdown-item">
+                    <input class="form-check-input" type="radio" name="searchType" id="exampleRadios1" value="Actor"
+                      checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                      Actor
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-check dropdown-item">
+                    <input class="form-check-input" type="radio" name="searchType" id="exampleRadios1" value="Type"
+                      checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                      Type
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-check dropdown-item ">
+                    <input class="form-check-input" type="radio" name="searchType" id="exampleRadios1" value="Title"
+                      checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                      Title
+                    </label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </form>
+        </div>
+      </nav>
+    </div>
+
+
+    <!-- Content -->
+    21159{if hasData}
+    <div>
+      <div class="row p-5">
+        <p class="display-1 " :class="{'text-light' : darkMode}">21159{movies.title}</p>
+        <div id="carouselExampleFade" class="carousel slide carousel-fade detailSlider">
+          <div class="carousel-inner carImage">
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark " aria-hidden="true"></span>
+            <span class="visually-hidden ">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+
+        </div>
+      </div>
+      <div class="row p-5">
+        <p class="display-3 " :class="{'text-light' : darkMode}">General information</p>
+        <div class="card">
+          <div class="card-body">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th class="custom-width">Title</th>
+                  <td>21159{movies.title}</td>
+                </tr>
+                <tr>
+                  <th>Year</th>
+                  <td>21159{movies.year}</td>
+
+                </tr>
+                <tr>
+                  <th>Director</th>
+                  <td id="directorList">
+                  </td>
+                </tr>
+                <tr>
+                  <th>Actor</th>
+                  <td id="actorList">
+                  </td>
+                </tr>
+                <tr>
+                  <th>Type</th>
+                  <!-- <td>{{film.type}}</td> -->
+                </tr>
+                <tr>
+                  <th>Plot Full</th>
+                  <td>21159{movies.plotFull}</td>
+                </tr>
+              </tbody>
+            </table>
+            <button class="btn-primary btn w-100 addButton " type="button">ADD FAVOUTITE</button>
+          </div>
+        </div>
+
+      </div>
+      <div class="row p-5">
+        <p class="display-3 " :class="{'text-light' : darkMode}">Review</p>
+        <div class="card">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item pre">
+                <a class="page-link" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item w-25 text-center currentPageShow"></li>
+              <li class="page-item next">
+                <a class="page-link " aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="card-body reviewList">
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    {else}
+    <div>
+      <div class="alert alert-danger " role="alert">
+        <h4 class="alert-heading">Data Not Found or Currently Being Updated</h4>
+        <p>I apologize for the inconvenience. The data you are looking for is currently unavailable or in the process of
+          being updated. We understand the importance of this information to you and are working diligently to resolve
+          this issue. We appreciate your patience and understanding during this time.</p>
+        <hr>
+        <p class="mb-0">Best Regards, Vo Chi Trung.</p>
+      </div>
+    </div>
+    {/if}
+
+    <!-- Footer -->
+    <div class="row ">
+      <nav class="navbar bg-body-tertiary rounded border border-light p-3 mb-2" :data-bs-theme="theme">
+        <div class="container-fluid ">
+          <h1 class="navbar-brand fs-6 ">footer</h1>
+        </div>
+      </nav>
+    </div>
+
+  </div>
+</body>
+
+<script>
+
+
+  let dark = false;
+  const updateMode = () => {
+    if ($('.inputDarkMode').is(':checked')) {
+      $('.bg').toggleClass('bg-dark')
+      $('.bg').removeClass('bg-body-secondary')
+      $('.heading').toggleClass('text-light');
+      $('.heading').removeClass('text-dark');
+      $('.searchForm').attr('action', `/search/dark=true`);
+      $('.homeButton').attr('href', `/dark=true`);
+      return true;
+    } else {
+      $('.bg').toggleClass('bg-body-secondary')
+      $('.bg').removeClass('bg-dark')
+      $('.heading').toggleClass('text-dark');
+      $('.heading').removeClass('text-light');
+      $('.searchForm').attr('action', `/search/dark=false`);
+      $('.homeButton').attr('href', `/dark=false`);
+      return false
+    }
+  }
+  dark = updateMode();
+  $('.inputDarkMode').on('change', (e) => {
+    dark = updateMode();
+  })
+
+  let currentPage = 1;
+  let perPage = 3;
+  let numberOfPage = 0
+  const generateImageList = async () => {
+    let picList = await fetch(`../../../api/movies/pic/id=21159{movies.id}`);
+    picList = await picList.json();
+    for (let i = 0; i < picList.length; i++) {
+      let htmlString = `<div class="carousel-item">
+              <img src="${picList[i].image}" class="d-block w-50 mx-auto " alt="${picList[i].image}">
+            </div>`;
+      let domObject = $(htmlString);
+      if (i == 0) domObject.addClass('active')
+      $('.carImage').append(domObject);
+    }
+  }
+  const generateDirectorList = async () => {
+    let directorList = await fetch(`../../../api/movies/director/id=21159{movies.id}`)
+    directorList = await directorList.json();
+    let str = "";
+    for (let i = 0; i < directorList.length; i++) {
+      str += directorList[i].name;
+      if (i != directorList.length - 1) str += ", ";
+    }
+    $('#directorList').append(str);
+  }
+  const generateActorList = async () => {
+    let domain = $(`<p></p>`)
+    let actorList = await fetch(`../../../api/movies/actor/id=21159{movies.id}`)
+    actorList = await actorList.json();
+    for (let i = 0; i < actorList.length; i++) {
+      domain.append(`<a href='../../../detail/actor/id=${actorList[i].id}/dark=${dark}'>${actorList[i].name}</a>`)
+      if (i != actorList.length - 1) domain.append(', ')
+    }
+    $('#actorList').append(domain);
+  }
+  const generateReview = async () => {
+    let reviewList = await fetch(`../../../api/review/id=21159{movies.id}/per_page=${perPage}/page=${currentPage}`);
+    reviewList = await reviewList.json();
+    for (const review of reviewList.reviews) {
+      $('.reviewList').append(`
+      <div div class="card mb-3" >
+        <div class="row g-0">
+          <div class="col-12"
+            <div class="card-body">
+              <h5 class="card-title">${review.username}</h5>
+              <p class="card-text display-3">${review.rate}
+              </p>
+              <p class="card-text">${review.title}
+              </p>
+              <p class="card-text">${review.content}
+              </p>
+              <p class="card-text"><small class="text-body-secondary">${review.date}</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div >
+      `)
+    }
+    numberOfPage = Math.ceil(reviewList.total / reviewList.perPage)
+    $('.currentPageShow').text(`${reviewList.page} / ${numberOfPage}`)
+  }
+  generateImageList();
+  generateDirectorList();
+  generateActorList();
+  generateReview(1);
+
+  $('.pre').on('click', async () => {
+    if (currentPage > 1) {
+      $('.reviewList').empty();
+      $('.currentPageShow').empty();
+      currentPage -= 1;
+      await generateReview();
+    }
+  })
+  $('.next').on('click', async () => {
+    if (currentPage < numberOfPage) {
+      $('.reviewList').empty();
+      $('.currentPageShow').empty();
+      currentPage += 1;
+      await generateReview();
+    }
+  })
+  $('.favpage').on('click',() => {
+    window.location.href = `/fav/dark=${dark}`;
+  })
+
+  $('.addButton').on('click',async () => {
+    let check = await fetch(`../../../api/movies/fav/add/id=21159{movies.id}`)
+    check = await check.json();
+    if(check) {
+      alert("Thêm thành công!");
+    } else {
+      alert("Thêm không thành công!");
+    }
+  })
+</script>
+
+</html>
